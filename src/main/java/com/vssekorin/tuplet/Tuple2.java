@@ -9,7 +9,7 @@ public final class Tuple2<A, B> {
     private final A item1;
     private final B item2;
 
-    public Tuple2(A src1, B src2) {
+    public Tuple2(final A src1, final B src2) {
         this.item1 = src1;
         this.item2 = src2;
     }
@@ -22,7 +22,7 @@ public final class Tuple2<A, B> {
         return this.item2;
     }
 
-    public boolean contains(Object obj) {
+    public boolean contains(final Object obj) {
         return obj.equals(this.item1) || obj.equals(this.item2);
     }
 
@@ -45,7 +45,7 @@ public final class Tuple2<A, B> {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
