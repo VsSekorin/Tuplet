@@ -17,6 +17,10 @@ public final class Tuple1<A> {
         return this.item;
     }
 
+    public <B> Tuple2<A, B> add(final B src) {
+        return new Tuple2<>(this.item, src);
+    }
+
     public boolean contains(final Object obj) {
         return obj.equals(this.item);
     }
