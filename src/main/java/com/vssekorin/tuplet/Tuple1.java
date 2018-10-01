@@ -7,26 +7,22 @@ import java.util.stream.Stream;
 
 public final class Tuple1<A> {
 
-    private final A item;
+    public final A _1;
 
     public Tuple1(final A src) {
-        this.item = src;
-    }
-
-    public A _1() {
-        return this.item;
+        this._1 = src;
     }
 
     public <B> Tuple2<A, B> add(final B src) {
-        return new Tuple2<>(this.item, src);
+        return new Tuple2<>(this._1, src);
     }
 
     public boolean contains(final Object obj) {
-        return obj.equals(this.item);
+        return obj.equals(this._1);
     }
 
     public Optional<A> toOptional() {
-        return Optional.ofNullable(this.item);
+        return Optional.ofNullable(this._1);
     }
 
     public Object[] toArray() {
@@ -34,16 +30,16 @@ public final class Tuple1<A> {
     }
 
     public List<A> toList() {
-        return Collections.singletonList(this.item);
+        return Collections.singletonList(this._1);
     }
 
     public Stream<A> toStream() {
-        return Stream.of(this.item);
+        return Stream.of(this._1);
     }
 
     @Override
     public String toString() {
-        return "Tuple1(" + item + ")";
+        return "Tuple1(" + _1 + ")";
     }
 
     @Override
@@ -55,11 +51,11 @@ public final class Tuple1<A> {
             return false;
         }
         final Tuple1<?> tuple1 = (Tuple1<?>) obj;
-        return item != null ? item.equals(tuple1.item) : tuple1.item == null;
+        return _1 != null ? _1.equals(tuple1._1) : tuple1._1 == null;
     }
 
     @Override
     public int hashCode() {
-        return item != null ? item.hashCode() : 0;
+        return _1 != null ? _1.hashCode() : 0;
     }
 }

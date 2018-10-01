@@ -9,12 +9,12 @@ import static org.junit.Assert.*;
 
 public class Tuple1Test {
 
-    private final String item = "My item";
+    private final String item = "My _1";
     private final Tuple1<String> tuple = new Tuple1<>(item);
 
     @Test
     public void _1() {
-        assertEquals(item, tuple._1());
+        assertEquals(item, tuple._1);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class Tuple1Test {
 
     @Test
     public void differentTuplesAreNotEquals() {
-        final Tuple1<String> other = new Tuple1<>("Other item");
+        final Tuple1<String> other = new Tuple1<>("Other _1");
         Assert.assertNotEquals(tuple, other);
     }
 }
