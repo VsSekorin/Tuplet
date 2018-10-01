@@ -7,18 +7,18 @@ import static org.junit.Assert.*;
 
 public class Tuple2Test {
 
-    private final String item1 = "First item";
+    private final String item1 = "First _1";
     private final Integer item2 = 16;
     private final Tuple2<String, Integer> tuple = new Tuple2<>(item1, item2);
 
     @Test
     public void _1() {
-        assertEquals(item1, tuple._1());
+        assertEquals(item1, tuple._1);
     }
 
     @Test
     public void _2() {
-        assertEquals(item2, tuple._2());
+        assertEquals(item2, tuple._2);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class Tuple2Test {
 
     @Test
     public void differentTuplesAreNotEquals() {
-        final Tuple2<String, Integer> other = new Tuple2<>("Other item", 0);
+        final Tuple2<String, Integer> other = new Tuple2<>("Other _1", 0);
         assertNotEquals(tuple, other);
     }
 }
