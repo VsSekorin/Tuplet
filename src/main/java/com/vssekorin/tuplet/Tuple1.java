@@ -17,6 +17,10 @@ public final class Tuple1<A> {
         return new Tuple2<>(this._1, src);
     }
 
+    public Tuple1<A> reverse() {
+        return this;
+    }
+
     public boolean contains(final Object obj) {
         return obj.equals(this._1);
     }
