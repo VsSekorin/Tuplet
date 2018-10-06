@@ -3,6 +3,7 @@ package com.vssekorin.tuplet;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 public final class Tuple1<A> {
@@ -19,6 +20,10 @@ public final class Tuple1<A> {
 
     public Tuple1<A> reverse() {
         return this;
+    }
+
+    public <T> Tuple1<T> map(final Function<A, T> map) {
+        return new Tuple1<>(map.apply(this._1));
     }
 
     public boolean contains(final Object obj) {

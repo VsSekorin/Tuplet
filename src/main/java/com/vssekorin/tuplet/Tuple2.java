@@ -2,6 +2,7 @@ package com.vssekorin.tuplet;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 public final class Tuple2<A, B> {
@@ -16,6 +17,14 @@ public final class Tuple2<A, B> {
 
     public Tuple2<B, A> reverse() {
         return new Tuple2<>(this._2, this._1);
+    }
+
+    public <T> Tuple2<T, B> map_1(final Function<A, T> map) {
+        return new Tuple2<>(map.apply(this._1), this._2);
+    }
+
+    public <T> Tuple2<A, T> map_2(final Function<B, T> map) {
+        return new Tuple2<>(this._1, map.apply(this._2));
     }
 
     public boolean contains(final Object obj) {
