@@ -57,7 +57,7 @@ public class Tuple1Test {
 
     @Test
     public void toStream() {
-        final Stream<String> stream = tuple.toStream();
+        final Stream<String> stream = tuple.stream();
         assertEquals(1, stream.count());
     }
 
