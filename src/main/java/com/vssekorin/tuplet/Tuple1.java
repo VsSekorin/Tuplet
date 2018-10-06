@@ -42,7 +42,7 @@ public final class Tuple1<A> {
         return Collections.singletonList(this._1);
     }
 
-    public Stream<A> toStream() {
+    public Stream<A> stream() {
         return Stream.of(this._1);
     }
 

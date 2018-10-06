@@ -39,7 +39,7 @@ public final class Tuple2<A, B> {
         return Arrays.asList(this._1, this._2);
     }
 
-    public Stream<Object> toStream() {
+    public Stream<Object> stream() {
         return Stream.of(this._1, this._2);
     }
 

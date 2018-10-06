@@ -50,7 +50,7 @@ public class Tuple2Test {
 
     @Test
     public void toStream() {
-        final Stream<Object> stream = tuple.toStream();
+        final Stream<Object> stream = tuple.stream();
         assertEquals(2, stream.count());
     }
 
