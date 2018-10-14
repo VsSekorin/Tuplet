@@ -74,4 +74,25 @@ public class Tuple2Test {
         final Tuple2<String, Integer> other = new Tuple2<>("Other _1", 0);
         assertNotEquals(tuple, other);
     }
+
+    @Test
+    public void reverse() {
+        final Tuple2<Integer, String> reversed = tuple.reverse();
+        final Tuple2<Integer, String> expected = new Tuple2<>(item2, item1);
+        assertEquals(expected, reversed);
+    }
+
+    @Test
+    public void map1() {
+        final Tuple2<Integer, Integer> mapped = tuple.map_1(String::length);
+        final Tuple2<Integer, Integer> expected = new Tuple2<>(item1.length(), item2);
+        assertEquals(expected, mapped);
+    }
+
+    @Test
+    public void map2() {
+        final Tuple2<String, String> mapped = tuple.map_2(Object::toString);
+        final Tuple2<String, String> expected = new Tuple2<>(item1, item2.toString());
+        assertEquals(expected, mapped);
+    }
 }

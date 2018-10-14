@@ -3,7 +3,6 @@ package com.vssekorin.tuplet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
-import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -44,15 +43,15 @@ public class Tuple1Test {
     @Test
     public void toArray() {
         final Object[] array = tuple.toArray();
-        Assert.assertEquals(1, array.length);
-        Assert.assertEquals(item, array[0]);
+        assertEquals(1, array.length);
+        assertEquals(item, array[0]);
     }
 
     @Test
     public void toList() {
         final List<String> list = tuple.toList();
-        Assert.assertEquals(1, list.size());
-        Assert.assertEquals(item, list.get(0));
+        assertEquals(1, list.size());
+        assertEquals(item, list.get(0));
     }
 
     @Test
@@ -64,20 +63,33 @@ public class Tuple1Test {
     @Test
     public void testToString() {
         final String str = tuple.toString();
-        Assert.assertTrue(str.startsWith("Tuple1("));
-        Assert.assertTrue(str.contains(item));
-        Assert.assertTrue(str.endsWith(")"));
+        assertTrue(str.startsWith("Tuple1("));
+        assertTrue(str.contains(item));
+        assertTrue(str.endsWith(")"));
     }
 
     @Test
     public void similarTuplesAreEquals() {
         final Tuple1<String> other = new Tuple1<>(item);
-        Assert.assertEquals(tuple, other);
+        assertEquals(tuple, other);
     }
 
     @Test
     public void differentTuplesAreNotEquals() {
         final Tuple1<String> other = new Tuple1<>("Other _1");
-        Assert.assertNotEquals(tuple, other);
+        assertNotEquals(tuple, other);
+    }
+
+    @Test
+    public void reverse() {
+        final Tuple1<String> reversed = tuple.reverse();
+        assertEquals(tuple, reversed);
+    }
+
+    @Test
+    public void map() {
+        final Tuple1<Integer> mapped = tuple.map(String::length);
+        final Tuple1<Integer> expected = new Tuple1<>(item.length());
+        assertEquals(expected, mapped);
     }
 }
