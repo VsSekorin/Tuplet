@@ -7,12 +7,20 @@ import java.util.stream.Stream;
 
 public final class Tuple2<A, B> {
 
-    public final A _1;
-    public final B _2;
+    private final A _1;
+    private final B _2;
 
     public Tuple2(final A src1, final B src2) {
         this._1 = src1;
         this._2 = src2;
+    }
+
+    public A _1() {
+        return this._1;
+    }
+
+    public B _2() {
+        return this._2;
     }
 
     public Tuple2<B, A> reverse() {

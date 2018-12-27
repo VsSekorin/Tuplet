@@ -8,10 +8,14 @@ import java.util.stream.Stream;
 
 public final class Tuple1<A> {
 
-    public final A _1;
+    private final A _1;
 
     public Tuple1(final A src) {
         this._1 = src;
+    }
+
+    public A _1() {
+        return this._1;
     }
 
     public <B> Tuple2<A, B> add(final B src) {

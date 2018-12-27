@@ -17,6 +17,18 @@ public final class Tuple3<A, B, C> {
         this._3 = src3;
     }
 
+    public A _1() {
+        return this._1;
+    }
+
+    public B _2() {
+        return this._2;
+    }
+
+    public C _3() {
+        return this._3;
+    }
+
     public Tuple3<C, B, A> reverse() {
         return new Tuple3<>(this._3, this._2, this._1);
     }
