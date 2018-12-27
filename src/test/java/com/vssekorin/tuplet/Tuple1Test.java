@@ -13,7 +13,7 @@ public class Tuple1Test {
 
     @Test
     public void _1() {
-        assertEquals(item, tuple._1);
+        assertEquals(item, tuple._1());
     }
 
     @Test

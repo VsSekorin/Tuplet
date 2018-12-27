@@ -13,12 +13,12 @@ public class Tuple2Test {
 
     @Test
     public void _1() {
-        assertEquals(item1, tuple._1);
+        assertEquals(item1, tuple._1());
     }
 
     @Test
     public void _2() {
-        assertEquals(item2, tuple._2);
+        assertEquals(item2, tuple._2());
     }
 
     @Test
