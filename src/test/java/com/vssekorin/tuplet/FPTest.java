@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class FPTest {
+public final class FPTest {
 
     @Test
     public void zip() {

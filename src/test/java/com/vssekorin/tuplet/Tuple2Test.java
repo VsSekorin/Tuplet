@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class Tuple2Test {
+public final class Tuple2Test {
 
     private final String item1 = "First _1";
     private final Integer item2 = 16;
