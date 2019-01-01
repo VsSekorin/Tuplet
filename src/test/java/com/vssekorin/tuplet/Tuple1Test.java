@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class Tuple1Test {
+public final class Tuple1Test {
 
     private final String item = "My _1";
     private final Tuple1<String> tuple = new Tuple1<>(item);
