@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 
 public final class Tuple3<A, B, C> {
 
-    public final A _1;
-    public final B _2;
-    public final C _3;
+    private final A _1;
+    private final B _2;
+    private final C _3;
 
     public Tuple3(final A src1, final B src2, final C src3) {
         this._1 = src1;
