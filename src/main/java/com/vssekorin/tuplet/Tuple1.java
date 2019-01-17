@@ -8,18 +8,22 @@ import java.util.stream.Stream;
 
 public final class Tuple1<A> {
 
-    private final A _1;
+    private final A item1;
 
     public Tuple1(final A src) {
-        this._1 = src;
+        this.item1 = src;
     }
 
     public A _1() {
-        return this._1;
+        return this.item1;
     }
 
-    public <B> Tuple2<A, B> add(final B src) {
-        return new Tuple2<>(this._1, src);
+    public <T> Tuple2<T, A> addFirst(final T src) {
+        return new Tuple2<>(src, this.item1);
+    }
+
+    public <T> Tuple2<A, T> addLast(final T src) {
+        return new Tuple2<>(this.item1, src);
     }
 
     public Tuple1<A> reverse() {
@@ -27,15 +31,15 @@ public final class Tuple1<A> {
     }
 
     public <T> Tuple1<T> map(final Function<A, T> map) {
-        return new Tuple1<>(map.apply(this._1));
+        return new Tuple1<>(map.apply(this.item1));
     }
 
     public boolean contains(final Object obj) {
-        return obj.equals(this._1);
+        return obj.equals(this.item1);
     }
 
     public Optional<A> toOptional() {
-        return Optional.ofNullable(this._1);
+        return Optional.ofNullable(this.item1);
     }
 
     public Object[] toArray() {
@@ -43,16 +47,16 @@ public final class Tuple1<A> {
     }
 
     public List<A> toList() {
-        return Collections.singletonList(this._1);
+        return Collections.singletonList(this.item1);
     }
 
     public Stream<A> stream() {
-        return Stream.of(this._1);
+        return Stream.of(this.item1);
     }
 
     @Override
     public String toString() {
-        return "Tuple1(" + _1 + ")";
+        return "Tuple1(" + item1 + ")";
     }
 
     @Override
@@ -64,11 +68,11 @@ public final class Tuple1<A> {
             return false;
         }
         final Tuple1<?> tuple1 = (Tuple1<?>) obj;
-        return _1 != null ? _1.equals(tuple1._1) : tuple1._1 == null;
+        return item1 != null ? item1.equals(tuple1.item1) : tuple1.item1 == null;
     }
 
     @Override
     public int hashCode() {
-        return _1 != null ? _1.hashCode() : 0;
+        return item1 != null ? item1.hashCode() : 0;
     }
 }
