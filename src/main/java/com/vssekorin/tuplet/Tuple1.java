@@ -1,12 +1,13 @@
 package com.vssekorin.tuplet;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-public final class Tuple1<A> {
+public final class Tuple1<A> implements Serializable {
 
     private final A item1;
 
