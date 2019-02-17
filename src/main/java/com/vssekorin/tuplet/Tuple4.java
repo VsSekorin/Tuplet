@@ -1,11 +1,12 @@
 package com.vssekorin.tuplet;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-public final class Tuple4<A, B, C, D> {
+public final class Tuple4<A, B, C, D> implements Serializable {
 
     private final A item1;
     private final B item2;
