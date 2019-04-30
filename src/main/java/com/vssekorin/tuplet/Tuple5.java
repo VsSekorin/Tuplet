@@ -3,6 +3,7 @@ package com.vssekorin.tuplet;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -97,24 +98,17 @@ public final class Tuple5<A, B, C, D, E> implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tuple5<?, ?, ?, ?, ?> tuple5 = (Tuple5<?, ?, ?, ?, ?>) o;
-        if (item1 != null ? !item1.equals(tuple5.item1) : tuple5.item1 != null) return false;
-        if (item2 != null ? !item2.equals(tuple5.item2) : tuple5.item2 != null) return false;
-        if (item3 != null ? !item3.equals(tuple5.item3) : tuple5.item3 != null) return false;
-        if (item4 != null ? !item4.equals(tuple5.item4) : tuple5.item4 != null) return false;
-        return item5 != null ? item5.equals(tuple5.item5) : tuple5.item5 == null;
+    public boolean equals(final Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        final Tuple5<?, ?, ?, ?, ?> that = (Tuple5<?, ?, ?, ?, ?>) obj;
+        return Objects.equals(item1, that.item1) && Objects.equals(item2, that.item2)
+            && Objects.equals(item3, that.item3) && Objects.equals(item4, that.item4)
+            && Objects.equals(item5, that.item5);
     }
 
     @Override
     public int hashCode() {
-        int result = item1 != null ? item1.hashCode() : 0;
-        result = 31 * result + (item2 != null ? item2.hashCode() : 0);
-        result = 31 * result + (item3 != null ? item3.hashCode() : 0);
-        result = 31 * result + (item4 != null ? item4.hashCode() : 0);
-        result = 31 * result + (item5 != null ? item5.hashCode() : 0);
-        return result;
+        return Objects.hash(item1, item2, item3, item4, item5);
     }
 }
