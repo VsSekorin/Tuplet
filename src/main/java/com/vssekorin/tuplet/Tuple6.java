@@ -3,6 +3,7 @@ package com.vssekorin.tuplet;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -95,31 +96,22 @@ public final class Tuple6<A, B, C, D, E, F> implements Serializable {
 
     @Override
     public String toString() {
-        return "Tuple6(" + item1 + ", " + item2 + ", " + item3 + ", " + item4 + ", " + item5 + ", " + item6 + ")";
+        return "Tuple6(" +
+            item1 + ", " + item2 + ", " + item3 + ", " + item4 + ", " + item5 + ", " + item6 + ")";
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Tuple6<?, ?, ?, ?, ?, ?> tuple6 = (Tuple6<?, ?, ?, ?, ?, ?>) o;
-        if (item1 != null ? !item1.equals(tuple6.item1) : tuple6.item1 != null) return false;
-        if (item2 != null ? !item2.equals(tuple6.item2) : tuple6.item2 != null) return false;
-        if (item3 != null ? !item3.equals(tuple6.item3) : tuple6.item3 != null) return false;
-        if (item4 != null ? !item4.equals(tuple6.item4) : tuple6.item4 != null) return false;
-        if (item5 != null ? !item5.equals(tuple6.item5) : tuple6.item5 != null) return false;
-        return item6 != null ? item6.equals(tuple6.item6) : tuple6.item6 == null;
-
+    public boolean equals(final Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        final Tuple6<?, ?, ?, ?, ?, ?> that = (Tuple6<?, ?, ?, ?, ?, ?>) obj;
+        return Objects.equals(item1, that.item1) && Objects.equals(item2, that.item2)
+            && Objects.equals(item3, that.item3) && Objects.equals(item4, that.item4)
+            && Objects.equals(item5, that.item5) && Objects.equals(item6, that.item6);
     }
 
     @Override
     public int hashCode() {
-        int result = item1 != null ? item1.hashCode() : 0;
-        result = 31 * result + (item2 != null ? item2.hashCode() : 0);
-        result = 31 * result + (item3 != null ? item3.hashCode() : 0);
-        result = 31 * result + (item4 != null ? item4.hashCode() : 0);
-        result = 31 * result + (item5 != null ? item5.hashCode() : 0);
-        result = 31 * result + (item6 != null ? item6.hashCode() : 0);
-        return result;
+        return Objects.hash(item1, item2, item3, item4, item5, item6);
     }
 }

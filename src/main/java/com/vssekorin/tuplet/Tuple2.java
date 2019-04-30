@@ -3,6 +3,7 @@ package com.vssekorin.tuplet;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -67,21 +68,14 @@ public final class Tuple2<A, B> implements Serializable {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        final Tuple2<?, ?> tuple2 = (Tuple2<?, ?>) obj;
-        if (item1 != null ? !item1.equals(tuple2.item1) : tuple2.item1 != null) return false;
-        return item2 != null ? item2.equals(tuple2.item2) : tuple2.item2 == null;
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        final Tuple2<?, ?> that = (Tuple2<?, ?>) obj;
+        return Objects.equals(item1, that.item1) && Objects.equals(item2, that.item2);
     }
 
     @Override
     public int hashCode() {
-        int result = item1 != null ? item1.hashCode() : 0;
-        result = 31 * result + (item2 != null ? item2.hashCode() : 0);
-        return result;
+        return Objects.hash(item1, item2);
     }
 }
