@@ -1,14 +1,14 @@
 package com.vssekorin.tuplet;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Stream;
 
-public final class Tuple1<A> implements Serializable {
+public final class Tuple1<A> implements Tuple {
+
+    private static final int SIZE = 1;
 
     private final A item1;
 
@@ -28,12 +28,12 @@ public final class Tuple1<A> implements Serializable {
         return new Tuple2<>(this.item1, src);
     }
 
-    public Tuple0<A> removeFirst() {
-        return new Tuple0<>();
+    public Tuple0 removeFirst() {
+        return new Tuple0();
     }
 
-    public Tuple0<A> removeLast() {
-        return new Tuple0<>();
+    public Tuple0 removeLast() {
+        return new Tuple0();
     }
 
     public Tuple1<A> reverse() {
@@ -44,29 +44,28 @@ public final class Tuple1<A> implements Serializable {
         return new Tuple1<>(map.apply(this.item1));
     }
 
-    public boolean contains(final Object obj) {
-        return obj.equals(this.item1);
-    }
-
     public Optional<A> toOptional() {
         return Optional.ofNullable(this.item1);
     }
 
-    public Object[] toArray() {
-        return this.toList().toArray();
+    @Override
+    public int size() {
+        return SIZE;
     }
 
-    public List<A> toList() {
+    @Override
+    public boolean contains(final Object obj) {
+        return obj.equals(this.item1);
+    }
+
+    @Override
+    public List<Object> toList() {
         return Collections.singletonList(this.item1);
-    }
-
-    public Stream<A> stream() {
-        return Stream.of(this.item1);
     }
 
     @Override
     public String toString() {
-        return "Tuple1(" + item1 + ")";
+        return "Tuple1(" + this.item1 + ")";
     }
 
     @Override
@@ -74,11 +73,11 @@ public final class Tuple1<A> implements Serializable {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         final Tuple1<?> that = (Tuple1<?>) obj;
-        return Objects.equals(item1, that.item1);
+        return Objects.equals(this.item1, that.item1);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(item1);
+        return Objects.hash(this.item1);
     }
 }

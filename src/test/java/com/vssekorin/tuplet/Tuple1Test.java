@@ -49,14 +49,14 @@ public final class Tuple1Test {
 
     @Test
     public void toList() {
-        final List<String> list = tuple.toList();
+        final List<Object> list = tuple.toList();
         assertEquals(1, list.size());
         assertEquals(item, list.get(0));
     }
 
     @Test
     public void toStream() {
-        final Stream<String> stream = tuple.stream();
+        final Stream<Object> stream = tuple.stream();
         assertEquals(1, stream.count());
     }
 

@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public final class Tuple0Test {
 
-    private final Tuple0<String> tuple = new Tuple0<>();
+    private final Tuple0 tuple = new Tuple0();
 
     @Test
     public void contains() {
@@ -19,7 +19,7 @@ public final class Tuple0Test {
 
     @Test
     public void toOptionalWithoutValue() {
-        final Optional<String> optional = tuple.toOptional();
+        final Optional<Object> optional = tuple.toOptional();
         assertFalse(optional.isPresent());
     }
 
@@ -31,13 +31,13 @@ public final class Tuple0Test {
 
     @Test
     public void toList() {
-        final List<String> list = tuple.toList();
+        final List<Object> list = tuple.toList();
         assertTrue(list.isEmpty());
     }
 
     @Test
     public void toStream() {
-        final Stream<String> stream = tuple.stream();
+        final Stream<Object> stream = tuple.stream();
         assertEquals(0, stream.count());
     }
 
@@ -48,13 +48,13 @@ public final class Tuple0Test {
 
     @Test
     public void similarTuplesAreEquals() {
-        final Tuple0<String> other = new Tuple0<>();
+        final Tuple0 other = new Tuple0();
         assertEquals(tuple, other);
     }
 
     @Test
     public void reverse() {
-        final Tuple0<String> reversed = tuple.reverse();
+        final Tuple0 reversed = tuple.reverse();
         assertEquals(tuple, reversed);
     }
 }
