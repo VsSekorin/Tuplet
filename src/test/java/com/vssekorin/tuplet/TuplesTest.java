@@ -9,14 +9,14 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public final class TupleTest {
+public final class TuplesTest {
 
     @Test
     public void fromMap() {
         final Map<String, Integer> map = new HashMap<>();
         map.put("one", 1);
         map.put("two", 2);
-        final List<Tuple2<String, Integer>> fromMap = Tuple.from(map);
+        final List<Tuple2<String, Integer>> fromMap = Tuples.from(map);
         final List<Tuple2<String, Integer>> expected = Arrays.asList(
             new Tuple2<>("one", 1), new Tuple2<>("two", 2)
         );

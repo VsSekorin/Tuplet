@@ -1,13 +1,13 @@
 package com.vssekorin.tuplet;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Stream;
 
-public final class Tuple3<A, B, C> implements Serializable {
+public final class Tuple3<A, B, C> implements Tuple {
+
+    private static final int SIZE = 3;
 
     private final A item1;
     private final B item2;
@@ -32,19 +32,19 @@ public final class Tuple3<A, B, C> implements Serializable {
     }
 
     public <T> Tuple4<T, A, B, C> addFirst(final T src) {
-        return new Tuple4<>(src, item1, item2, item3);
+        return new Tuple4<>(src, this.item1, this.item2, this.item3);
     }
 
     public <T> Tuple4<A, B, C, T> addLast(final T src) {
-        return new Tuple4<>(item1, item2, item3, src);
+        return new Tuple4<>(this.item1, this.item2, this.item3, src);
     }
 
     public Tuple2<B, C> removeFirst() {
-        return new Tuple2<>(item2, item3);
+        return new Tuple2<>(this.item2, this.item3);
     }
 
     public Tuple2<A, B> removeLast() {
-        return new Tuple2<>(item1, item2);
+        return new Tuple2<>(this.item1, this.item2);
     }
 
     public Tuple3<C, B, A> reverse() {
@@ -63,25 +63,22 @@ public final class Tuple3<A, B, C> implements Serializable {
         return new Tuple3<>(this.item1, this.item2, map.apply(this.item3));
     }
 
-    public boolean contains(final Object obj) {
-        return obj.equals(this.item1) || obj.equals(this.item2) || obj.equals(this.item3);
+    @Override
+    public int size() {
+        return SIZE;
     }
 
-    public Object[] toArray() {
-        return this.toList().toArray();
+    public boolean contains(final Object obj) {
+        return obj.equals(this.item1) || obj.equals(this.item2) || obj.equals(this.item3);
     }
 
     public List<Object> toList() {
         return Arrays.asList(this.item1, this.item2, this.item3);
     }
 
-    public Stream<Object> stream() {
-        return Stream.of(this.item1, this.item2, this.item3);
-    }
-
     @Override
     public String toString() {
-        return "Tuple3(" + item1 + ", " + item2 + ", " + item3 +")";
+        return "Tuple3(" + this.item1 + ", " + this.item2 + ", " + this.item3 +")";
     }
 
     @Override
@@ -89,12 +86,12 @@ public final class Tuple3<A, B, C> implements Serializable {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         final Tuple3<?, ?, ?> that = (Tuple3<?, ?, ?>) obj;
-        return Objects.equals(item1, that.item1) && Objects.equals(item2, that.item2)
-            && Objects.equals(item3, that.item3);
+        return Objects.equals(this.item1, that.item1) && Objects.equals(this.item2, that.item2)
+            && Objects.equals(this.item3, that.item3);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(item1, item2, item3);
+        return Objects.hash(this.item1, this.item2, this.item3);
     }
 }

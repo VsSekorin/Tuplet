@@ -1,12 +1,12 @@
 package com.vssekorin.tuplet;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public final class Tuple0<A> implements Serializable {
+public final class Tuple0 implements Tuple {
+
+    private static final int SIZE = 0;
 
     public Tuple0() {
     }
@@ -19,28 +19,27 @@ public final class Tuple0<A> implements Serializable {
         return new Tuple1<>(src);
     }
 
-    public Tuple0<A> reverse() {
+    public Tuple0 reverse() {
         return this;
     }
 
+    public Optional<Object> toOptional() {
+        return Optional.empty();
+    }
+
+    @Override
+    public int size() {
+        return SIZE;
+    }
+
+    @Override
     public boolean contains(final Object obj) {
         return false;
     }
 
-    public Optional<A> toOptional() {
-        return Optional.empty();
-    }
-
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    public List<A> toList() {
+    @Override
+    public List<Object> toList() {
         return Collections.emptyList();
-    }
-
-    public Stream<A> stream() {
-        return Stream.empty();
     }
 
     @Override

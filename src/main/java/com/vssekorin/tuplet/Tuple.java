@@ -1,19 +1,28 @@
 package com.vssekorin.tuplet;
 
+import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public final class Tuple {
+public interface Tuple extends Serializable, Iterable<Object> {
 
-    private Tuple() {
+    int size();
+
+    boolean contains(final Object obj);
+
+    List<Object> toList();
+
+    default Object[] toArray() {
+        return this.toList().toArray();
     }
 
-    public static <A, B> Tuple2<A, B> from(final Map.Entry<A, B> entry) {
-        return new Tuple2<>(entry.getKey(), entry.getValue());
+    default Stream<Object> stream() {
+        return this.toList().stream();
     }
 
-    public static <A, B> List<Tuple2<A, B>> from(final Map<A, B> map) {
-        return map.entrySet().stream().map(Tuple::from).collect(Collectors.toList());
+    @Override
+    default Iterator<Object> iterator() {
+        return this.toList().iterator();
     }
 }
