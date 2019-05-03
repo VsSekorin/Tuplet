@@ -51,6 +51,14 @@ public final class Tuple5<A, B, C, D, E> implements Serializable {
         return new Tuple6<>(item1, item2, item3, item4, item5, src);
     }
 
+    public Tuple4<B, C, D, E> removeFirst() {
+        return new Tuple4<>(item2, item3, item4, item5);
+    }
+
+    public Tuple4<A, B, C, D> removeLast() {
+        return new Tuple4<>(item1, item2, item3, item4);
+    }
+
     public Tuple5<E, D, C, B, A> reverse() {
         return new Tuple5<>(item5, item4, item3, item2, item1);
     }

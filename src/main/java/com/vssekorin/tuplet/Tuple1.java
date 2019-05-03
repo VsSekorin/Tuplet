@@ -28,6 +28,14 @@ public final class Tuple1<A> implements Serializable {
         return new Tuple2<>(this.item1, src);
     }
 
+    public Tuple0<A> removeFirst() {
+        return new Tuple0<>();
+    }
+
+    public Tuple0<A> removeLast() {
+        return new Tuple0<>();
+    }
+
     public Tuple1<A> reverse() {
         return this;
     }
